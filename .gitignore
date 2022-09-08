@@ -1,2 +1,13 @@
-HW0/*
+HW*/*
+
+# code files
+!*.cpp
+!*.py
+
+# overview docs
+!*/HW*_Overview.pdf
+
+# misc
+!.gitignore
+!README.md
 !HW0/Overview_of_ML.pdf
