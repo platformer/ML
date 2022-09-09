@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// sums all elements of a vector
 double sum(vector<double> vec) {
     double sum = 0;
     for (double d : vec) {
@@ -14,10 +15,12 @@ double sum(vector<double> vec) {
     return sum;
 }
 
+// finds mean of elements of a vector
 double mean(vector<double> vec) {
     return sum(vec) / vec.size();
 }
 
+// finds median element of a vector
 double median(vector<double> vec) {
     int size = vec.size();
     double med;
@@ -30,6 +33,7 @@ double median(vector<double> vec) {
     return med;
 }
 
+// finds range of a vector
 double range(vector<double> vec) {
     if (vec.empty())
         return 0;
@@ -48,6 +52,7 @@ double range(vector<double> vec) {
     return max - min;
 }
 
+// finds covariance of two vectors
 double covar(vector<double> v1, vector<double> v2) {
     double v1_mean = mean(v1);
     double v2_mean = mean(v2);
@@ -55,15 +60,16 @@ double covar(vector<double> v1, vector<double> v2) {
     int size = fmin(v1.size(), v2.size());
 
     for (int i = 0; i < size; i++) {
-        sum_prod_devs = (v1[i] - v1_mean) * (v2[i] - v2_mean);
+        sum_prod_devs += (v1[i] - v1_mean) * (v2[i] - v2_mean);
     }
 
     return sum_prod_devs / (size - 1);
 }
 
+// finds correlation of two vectors
 double cor(vector<double> v1, vector<double> v2) {
-    double v1_std = sqrt(covar(v1, v1));
-    double v2_std = sqrt(covar(v2, v2));
+    double v1_std = sqrt(covar(v1, v1)); // standard deviation of v1
+    double v2_std = sqrt(covar(v2, v2)); // standard deviation of v2
     return covar(v1, v2) / (v1_std * v2_std);
 }
 
