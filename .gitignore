@@ -4,6 +4,9 @@ HW*/*
 !*.cpp
 !*.py
 
+# data
+!*.csv
+
 # overview docs
 !*/HW*_Overview.pdf
 
