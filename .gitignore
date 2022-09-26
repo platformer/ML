@@ -3,8 +3,11 @@ HW*/*
 # code files
 !*.cpp
 !*.py
+!*.Rmd
+!*.ipynb
 
 # data
+!*/data
 !*.csv
 
 # overview docs
@@ -14,3 +17,5 @@ HW*/*
 !.gitignore
 !README.md
 !HW0/Overview_of_ML.pdf
+!HW2/Classification.pdf
+!HW2/Regression.pdf
