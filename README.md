@@ -29,3 +29,13 @@ You can see the classification notebook [here](https://github.com/platformer/ML/
 You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW2/data).
+
+## Logistic Regression and Naive Bayes in C++
+
+This is a pair of C++ programs that implement Logistic Regression and Naive Bayes algorithms.
+
+You can see the logistic regression code [here](https://github.com/platformer/ML/blob/main/HW3/logreg.cpp).
+
+You can see the Naive Bayes code [here](https://github.com/platformer/ML/blob/main/HW3/naivebayes.cpp).
+
+You can see an overview document [here](https://github.com/platformer/ML/blob/main/HW3/HW3_Overview.pdf).
