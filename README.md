@@ -44,6 +44,10 @@ You can see an overview document [here](https://github.com/platformer/ML/blob/ma
 
 This is a set of R notebooks that explore the use of kNN and decision trees for regression and classification; k-means, hierarchical, and model-based clustering; and PCA and LDA dimensionality reduction.
 
+You can see the regression notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.Rmd).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.pdf).
+
 You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.Rmd).
 
 You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.pdf).
