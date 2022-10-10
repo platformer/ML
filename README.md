@@ -39,3 +39,21 @@ You can see the logistic regression code [here](https://github.com/platformer/ML
 You can see the Naive Bayes code [here](https://github.com/platformer/ML/blob/main/HW3/naivebayes.cpp).
 
 You can see an overview document [here](https://github.com/platformer/ML/blob/main/HW3/HW3_Overview.pdf).
+
+## Searching for Similarity with R
+
+This is a set of R notebooks that explore the use of kNN and decision trees for regression and classification; k-means, hierarchical, and model-based clustering; and PCA and LDA dimensionality reduction.
+
+You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.Rmd).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.pdf).
+
+You can see the clustering notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.Rmd).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.pdf).
+
+You can see the dimensionality reduction notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.Rmd).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.pdf).
+
+You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW4/data).
