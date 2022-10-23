@@ -1,0 +1,170 @@
+---
+title: "SVM Regression"
+authors: "Andrew Sen, Atmin Sheth"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+editor_options:
+  chunk_output_type: inline
+---
+
+**Authors:**
+
+Andrew Sen  
+Neo Zhao
+
+**Date:**
+
+10/23/2022
+
+## Data
+
+This notebook will use a dataset found on the UCI Machine Learning Repository:
+
+Fanaee-T, Hadi, and Gama, Joao, 'Event labeling combining ensemble detectors and background knowledge', Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset.
+
+The data describes hourly bike rental numbers from the Capital Bikeshare system between 2011 and 2012.
+
+The predictors include:
+
+*   instant: record index
+*   dteday: date
+*   season: season (1:winter, 2:spring, 3:summer, 4:fall)
+*   yr: year (0:2011, 1:2012)
+*   mnth: month (1 - 12)
+*   hr: hour (0-23)
+*   holiday: (0:not a holiday, 1:holiday)
+*   weekday: (0:Sunday - 6:Saturday)
+*   workingday: (0:not a workday, 1:not weekend and not holiday)
+*   weathersit: hourly weather
+    *   1: clear, few clouds, partly cloudy
+    *   2: mist+cloudy, mist+broken clouds, mist+few clouds, mist
+    *   3: light snow, light rain+thunderstorm+scattered clouds, light rain+scattered clouds
+    *   4: heavy rain+ice pallets+thunderstorm+mist, snow+fog
+*   temp: normalized temperature in Celsius
+*   atemp: normalized feeling temperature in Celsius
+*   hum: normalized humidity divided by 100
+*   windspeed: normalized wind speed divided by 67
+
+The possible target columns include:
+
+*   casual: number of rentals from casual users
+*   registered: number of rentals from registered users
+*   cnt: total rentals
+
+We will be predicting cnt.
+
+## Data Cleaning
+
+First, we will read in the data. Then, we will clean the data by removing rows with NAs and removing redundant columns. We will also remove the casual and registered columns because they are not independent from cnt.
+
+```{r}
+# loading packages
+library(e1071)
+
+df <- read.csv("data/bike-sharing.csv")
+
+# remove instant, dteday, season, yr, workday, temp, casual, registered
+df <- df[,c(5:8, 10, 12:14, 17)] 
+
+# remove incomplete rows
+df <- df[complete.cases(df),]
+```
+
+## Data Exploration
+
+First, we will divide the data into train and test data with an 80/20 split.
+
+```{r}
+set.seed(1234)
+i <- sample(nrow(df), size=.8*nrow(df), replace=FALSE)
+train <- df[i,]
+test <- df[-i,]
+
+# sampling 500 rows from train to tune models
+i <- sample(nrow(train), size=500, replace=FALSE)
+train_sample <- train[i,]
+```
+
+Now, we will explore the training data. First, we will see summaries of all the columns.
+
+```{r}
+summary(train)
+```
+
+Next, we'll graph the number of bike rentals over the hour of the day.
+
+```{r}
+plot(train$hr, train$cnt, xlab="Hour", ylab="Rentals")
+```
+
+The graph shows that early morning and the afternoon tend to be the most popular times for renting a bike.
+
+We will also plot bike rentals over feeling temperature.
+
+```{r}
+plot(train$atemp, train$cnt, xlab="Normalized Feeling Temperature", ylab="Rentals")
+```
+
+This shows that bike rentals tend to increase if the temperature is warmer.
+
+## Linear Kernel
+
+```{r}
+svm1 <- tune.svm(cnt~., data=train_sample, kernel="linear",
+  cost=c(0.001, 0.01, 0.1, 1, 5, 10, 100)
+)$best.model
+summary(svm1)
+```
+
+## Polynomial Kernel
+
+```{r}
+# tuning takes too long when passing a gamma range, so didn't do that here
+
+svm2 <- tune.svm(cnt~., data=train_sample, kernel="polynomial",
+  cost=c(0.001, 0.01, 0.1, 1, 5, 10, 100)
+)$best.model
+summary(svm2)
+```
+
+## Radial Kernel
+
+```{r}
+svm3 <- tune.svm(cnt~., data=train_sample, kernel="radial",
+  cost=c(0.001, 0.01, 0.1, 1, 5, 10, 100),
+  gamma=c(0.001, 0.01, 0.1, 1, 5, 10, 100)
+)$best.model
+summary(svm3)
+```
+
+## Test Models
+
+```{r}
+pred <- predict(svm1, newdata=test)
+cor_svm1 <- cor(pred, test$cnt)
+mse_svm1 <- mean((pred - test$cnt)^2)
+print(paste('correlation of svm1:', cor_svm1))
+print(paste('mse of svm1:', mse_svm1))
+
+pred <- predict(svm2, newdata=test)
+cor_svm2 <- cor(pred, test$cnt)
+mse_svm2 <- mean((pred - test$cnt)^2)
+print(paste('correlation of svm2:', cor_svm2))
+print(paste('mse of svm2:', mse_svm2))
+
+pred <- predict(svm3, newdata=test)
+cor_svm3 <- cor(pred, test$cnt)
+mse_svm3 <- mean((pred - test$cnt)^2)
+print(paste('correlation of svm3:', cor_svm3))
+print(paste('mse of svm3:', mse_svm3))
+```
+
+## Conclusion
+
+The linear kernel performed somewhat poorly because the data is very non-linear in nature. There is no linear model that would provided a good fit for this dataset, so SVM with a linear kernel is unlikely to significantly outperform simple linear regression, which would get a similar value for correlation.
+
+The polynomial kernel performed poorly likely because the model overfitted the sample given to the tuning function. With only 500 rows to train on, the model is unlikely to sufficiently generalize to the test data. It is worth noting that I also was forced to avoid passing a range of gamma parameters because the tuning function was unable to converge in that scenario. The poor performance of this kernel may also be attributed to the fact that most of the factors of the data are categorical, so a polynomial kernel may not be best suited for this scenario.
+
+The radial kernel performed the best of the three kernels. It makes sense that, assuming the model is not overfitted, this kernel would outperform the linear kernel due to the non-linear nature of the data. It is also possible that the radial kernel is more generalizable to the test data than the polynomial kernel given how few observations were used during tuning.

@@ -1,0 +1,130 @@
+---
+title: "Ensemble Techniques - Neo Zhao & Andrew Sen - CS4375"
+output:
+  pdf_document: default
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ROCR)
+library(mccr)
+library(ISLR)
+library(caret)
+library(tree)
+library(rpart)
+library(e1071)
+# Source: https://www.kaggle.com/datasets/budnyak/wine-rating-and-price?select=Red.csv 
+# Red, White, Rose, and Sparkling wine are all from the same dataset; however, separated by type
+# Red Total: 8666 
+Red <- read.csv("Red.csv")
+# White Total: 3764
+White <- read.csv("White.csv")
+# Rose Total: 397
+Rose <- read.csv("Rose.csv")
+# Sparkling Total: 1007
+Sparkling <- read.csv("Sparkling.csv")
+# Combine the datasets together, Total: 13058
+totalWine <- rbind(data = Red, data = White, data = Rose, data = Sparkling)
+# Rename ï..Name to just Name
+names(totalWine)[1] <- "Name"
+# Omit Names, Winery, & Region Column
+totalWine <- subset(totalWine, select = -c(Name, Winery, Region))
+# Omit all records where Year = N.V.
+totalWine <- subset(totalWine, totalWine$Year != "N.V.")
+# Omit all records before 2000s
+totalWine <- subset(totalWine, totalWine$Year >= 2000)
+# Make the Year from chr -> num
+totalWine$Year <- as.numeric(totalWine$Year)
+# Set Country from chr -> factor
+totalWine$Country <- as.factor(totalWine$Country)
+totalWine$Rating <- round(totalWine$Rating / 0.5) * 0.5
+  
+totalWine$Rating[totalWine$Rating == 0.5] <- 1
+totalWine$Rating[totalWine$Rating == 1] <- 2
+totalWine$Rating[totalWine$Rating == 1.5] <- 3
+totalWine$Rating[totalWine$Rating == 2] <- 4
+totalWine$Rating[totalWine$Rating == 2.5] <- 5
+totalWine$Rating[totalWine$Rating == 3] <- 6
+totalWine$Rating[totalWine$Rating == 3.5] <- 7
+totalWine$Rating[totalWine$Rating == 4] <- 8
+totalWine$Rating[totalWine$Rating == 4.5] <- 9
+totalWine$Rating[totalWine$Rating == 5] <- 10
+# Reorder Columns
+totalWine <- totalWine[,c(1,2,3,5,4)]
+# train/test
+set.seed(1234)
+i <- sample(1:nrow(totalWine), nrow(totalWine)*0.8, replace=FALSE)
+train <- totalWine[i,]
+test <- totalWine[-i,]
+```
+
+### Random Forest
+
+```{r}
+library(randomForest)
+set.seed(512)
+train_copy <- train
+train_copy$Rating <- as.factor(train_copy$Rating)
+start_time <- proc.time()
+rf <- randomForest(Rating ~ ., data = train_copy, importance = TRUE)
+end_time <- proc.time()
+summary(rf)
+print(paste("Training time: ", (end_time-start_time)[[3]], "s"))
+```
+
+```{r}
+pred <- predict(rf, newdata = test, type = "response")
+pred <- as.character(pred)
+acc_rf <- mean(pred == test$Rating)
+print(paste("Accuracy = ", acc_rf))
+```
+
+## XGBoost
+
+```{r}
+library(xgboost)
+# need to convert dataframe to matrix
+train_matrix <- data.matrix(train)
+start_time <- proc.time()
+xg <- xgboost(data=train_matrix, label=train$Rating, nrounds=100, objective='multi:softprob', num_class=11)
+end_time <- proc.time()
+summary(xg)
+print(paste("Training time: ", (end_time-start_time)[[3]], "s"))
+```
+
+```{r}
+test_matrix <- data.matrix(test)
+# get probability of each class for each x
+probs <- predict(xg, test_matrix, reshape=TRUE)
+pred <- rep(NA, dim(probs)[1])
+# take most likely values for predictions
+for (i in 1:dim(probs)[1]) {
+  pred[i] <- which.max(probs[i,]) - 1
+}
+acc_xg <- mean(pred==test$Rating)
+print(paste("accuracy=", acc_xg))
+```
+
+## Adaboost
+
+```{r}
+library(adabag)
+# limited to 2000 rows because adaboost is slow
+set.seed(1234)
+i <- sample(1:nrow(train), 2000, replace=FALSE)
+train_sample <- train[i,]
+train_sample$Rating <- as.factor(train_sample$Rating)
+start_time <- proc.time()
+adab <- boosting(Rating~., data=train_sample, boos=TRUE, mfinal=10)
+end_time <- proc.time()
+summary(adab)
+print(paste("Training time: ", (end_time-start_time)[[3]], "s"))
+```
+
+```{r}
+pred <- predict(adab, newdata=test, type="response")
+pred$class <- as.integer(pred$class)
+acc_adab <- mean(pred$class==test$Rating)
+print(paste("accuracy=", acc_adab))
+```

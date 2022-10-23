@@ -17,10 +17,17 @@ HW*/*
 # misc
 !.gitignore
 !README.md
+
 !HW0/Overview_of_ML.pdf
+
 !HW2/Classification.pdf
 !HW2/Regression.pdf
+
 !HW4/Regression.pdf
 !HW4/Classification.pdf
 !HW4/Clustering.pdf
 !HW4/Dimensionality_Reduction.pdf
+
+!HW5/Regression.pdf
+!HW5/Classification.pdf
+!HW5/Ensemble.pdf
