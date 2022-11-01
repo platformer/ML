@@ -79,3 +79,15 @@ You can see the ensemble notebook [here](https://github.com/platformer/ML/blob/m
 You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW5/data).
+
+## ML with sklearn
+
+This is a python notebook exploring the basics of using pandas, seaborn, and sklearn.
+
+You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.ipynb).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
+
+You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
+
+You can see the dataset [here](https://github.com/platformer/ML/blob/main/HW6/Auto.csv).

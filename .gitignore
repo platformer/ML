@@ -12,7 +12,7 @@ HW*/*
 !*.csv
 
 # overview docs
-!*/HW*_Overview.pdf
+!*/HW*.pdf
 
 # misc
 !.gitignore
