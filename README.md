@@ -20,13 +20,9 @@ You can see an overview document [here](https://github.com/platformer/ML/blob/ma
 
 This is a pair of R notebooks, one exploring linear regression and the other exploring classification. Each notebook uses a different dataset.
 
-You can see the linear regression notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.Rmd).
+You can see the linear regression notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.pdf).
 
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.pdf).
-
-You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW2/Classification.Rmd).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.pdf).
+You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW2/Classification.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW2/Regression.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW2/data).
 
@@ -44,21 +40,13 @@ You can see an overview document [here](https://github.com/platformer/ML/blob/ma
 
 This is a set of R notebooks that explore the use of kNN and decision trees for regression and classification; k-means, hierarchical, and model-based clustering; and PCA and LDA dimensionality reduction.
 
-You can see the regression notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.Rmd).
+You can see the regression notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.pdf).
 
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Regression.pdf).
+You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.pdf).
 
-You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.Rmd).
+You can see the clustering notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.pdf).
 
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Classification.pdf).
-
-You can see the clustering notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.Rmd).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Clustering.pdf).
-
-You can see the dimensionality reduction notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.Rmd).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.pdf).
+You can see the dimensionality reduction notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW4/Dimensionality_Reduction.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW4/data).
 
@@ -66,17 +54,11 @@ You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW4/d
 
 This is a set of R notebooks that explore the use of SVM and ensemble methods. The first uses SVM with different kernels to perform regression. The second does the same with a classification problem. The third notebook uses three different ensemble methods - random forest, XGBoost, and Adaboost - to perform classification.
 
-You can see the regression notebook [here](https://github.com/platformer/ML/blob/main/HW5/Regression.Rmd).
+You can see the regression notebook [here](https://github.com/platformer/ML/blob/main/HW5/Regression.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW5/Regression.pdf).
 
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW5/Regression.pdf).
+You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW5/Classification.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW5/Classification.pdf).
 
-You can see the classification notebook [here](https://github.com/platformer/ML/blob/main/HW5/Classification.Rmd).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW5/Classification.pdf).
-
-You can see the ensemble notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.Rmd).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.pdf).
+You can see the ensemble notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW5/data).
 
@@ -84,10 +66,6 @@ You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW5/d
 
 This is a python notebook exploring the basics of using pandas, seaborn, and sklearn.
 
-You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.ipynb).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
-
-You can see a pdf of the above notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
+You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.ipynb). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
 
 You can see the dataset [here](https://github.com/platformer/ML/blob/main/HW6/Auto.csv).
