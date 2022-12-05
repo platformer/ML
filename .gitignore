@@ -14,7 +14,7 @@ HW*/*
 # overview docs
 !*/HW*.pdf
 
-# misc
+# misc includes
 !.gitignore
 !README.md
 
@@ -31,3 +31,6 @@ HW*/*
 !HW5/Regression.pdf
 !HW5/Classification.pdf
 !HW5/Ensemble.pdf
+
+# misc ignores
+HW7/data/BIRDS-450-(200 X 200)-99.28.h5

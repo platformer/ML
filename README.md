@@ -69,3 +69,11 @@ This is a python notebook exploring the basics of using pandas, seaborn, and skl
 You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.ipynb). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW6/hw6.pdf).
 
 You can see the dataset [here](https://github.com/platformer/ML/blob/main/HW6/Auto.csv).
+
+# Image Classification with Keras
+
+This is a python notebook exploring the basics of Keras in order to classify images of birds according to their species.
+
+You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW7/hw7.ipynb). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW7/hw7.pdf).
+
+You can see the dataset [here](https://github.com/platformer/ML/blob/main/HW7/data).
