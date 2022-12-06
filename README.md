@@ -50,6 +50,8 @@ You can see the dimensionality reduction notebook [here](https://github.com/plat
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW4/data).
 
+You can see an overview document [here](https://github.com/platformer/ML/blob/main/HW4/HW4_Overview.pdf).
+
 ## SVM and Ensemble Techniques in R
 
 This is a set of R notebooks that explore the use of SVM and ensemble methods. The first uses SVM with different kernels to perform regression. The second does the same with a classification problem. The third notebook uses three different ensemble methods - random forest, XGBoost, and Adaboost - to perform classification.
@@ -61,6 +63,8 @@ You can see the classification notebook [here](https://github.com/platformer/ML/
 You can see the ensemble notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.Rmd). You can see a pdf of this notebook [here](https://github.com/platformer/ML/blob/main/HW5/Ensemble.pdf).
 
 You can see the datasets [here](https://github.com/platformer/ML/blob/main/HW5/data).
+
+You can see an overview document [here](https://github.com/platformer/ML/blob/main/HW5/HW5_Overview.pdf).
 
 ## ML with sklearn
 
