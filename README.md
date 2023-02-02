@@ -74,7 +74,7 @@ You can see the notebook [here](https://github.com/platformer/ML/blob/main/HW6/h
 
 You can see the dataset [here](https://github.com/platformer/ML/blob/main/HW6/Auto.csv).
 
-# Image Classification with Keras
+## Image Classification with Keras
 
 This is a python notebook exploring the basics of Keras in order to classify images of birds according to their species.
 
